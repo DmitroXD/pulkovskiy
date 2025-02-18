@@ -1,0 +1,6 @@
+pydantic-settings==2.7.1
+aiogram==3.18.0
+orjson==3.10.15
+redis==5.2.1
+pyyaml==6.0.2
+aiofiles==24.1.0
