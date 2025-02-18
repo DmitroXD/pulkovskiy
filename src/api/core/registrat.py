@@ -7,7 +7,7 @@ from routes import include_routes
 
 def create_app():
     param = {}
-    if not settings.is_production:
+    if settings.is_production:
         param["docs_url"] = None
 
     app = FastAPI(**param)
