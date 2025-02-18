@@ -1,26 +1,20 @@
-from abc import ABC, abstractmethod
-
 from schemas.menu import CreateMenuScheme, UpdateMenuScheme
+from services.abstract import AbstractService
 
 
-class AbstractMenuService(ABC):
+class MenuService(AbstractService):
 
-    @abstractmethod
-    async def get_all_positions(self):
+    async def get_all(self):
         ...
 
-    @abstractmethod
-    async def get_position_by_id(self, item_id: int):
+    async def get_by_id(self, item_id: int):
         ...
 
-    @abstractmethod
-    async def create_position(self, data: CreateMenuScheme):
+    async def create(self, data: CreateMenuScheme):
         ...
 
-    @abstractmethod
-    async def update_position(self, data: UpdateMenuScheme):
+    async def update(self, data: UpdateMenuScheme):
         ...
 
-    @abstractmethod
-    async def delete_position(self, item_id: int):
+    async def delete(self, item_id: int):
         ...
