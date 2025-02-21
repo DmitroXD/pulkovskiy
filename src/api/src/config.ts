@@ -18,16 +18,12 @@ class Settings {
   ENCODING: string = 'utf-8';
 
   @IsNumber()
-  @Transform(({ value }) => value || process.env.PORT)
-  PORT: number = 3002;
+  @Transform(({ value }) => value || process.env.API_PORT)
+  PORT: number;
 
   @IsNumber()
   @Transform(({ value }) => value || process.env.MYSQL_DNS)
   MYSQL_DNS: string;
-
-  get isProduction(): boolean {
-    return this.ENVIRONMENT === EnvironmentType.PRODUCTION;
-  }
 }
 
 let cachedSettings: Settings | null = null;
