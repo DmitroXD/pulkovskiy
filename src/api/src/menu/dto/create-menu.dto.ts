@@ -43,6 +43,6 @@ export class CreateMenuDto {
     title: 'Ссылка на фото',
     example: 'https://google.com/...',
   })
-  @IsNumber()
+  @IsString()
   readonly photo: string;
 }

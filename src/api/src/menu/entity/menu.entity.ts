@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {Column, Entity, ManyToMany, PrimaryGeneratedColumn} from 'typeorm';
+import {Backet} from "../../backet/entity/backet.entity";
 
 @Entity()
 export class Menu {
@@ -30,4 +31,7 @@ export class Menu {
     nullable: true,
   })
   photo: string;
+
+  @ManyToMany(() => Backet, (backet) => backet.menus)
+  backets: Backet[];
 }
