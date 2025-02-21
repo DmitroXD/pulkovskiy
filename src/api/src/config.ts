@@ -21,6 +21,10 @@ class Settings {
   @Transform(({ value }) => value || process.env.PORT)
   PORT: number = 3002;
 
+  @IsNumber()
+  @Transform(({ value }) => value || process.env.MYSQL_DNS)
+  MYSQL_DNS: string;
+
   get isProduction(): boolean {
     return this.ENVIRONMENT === EnvironmentType.PRODUCTION;
   }
