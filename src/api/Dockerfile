@@ -1,6 +1,7 @@
 FROM node:23-apline
 
 ENV NODE_ENV=production
+ARG API_PORT
 
 RUN mkdir /frontend
 WORKDIR /frontend
