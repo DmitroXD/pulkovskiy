@@ -21,20 +21,20 @@ class Settings(BaseSettings):
     )
 
     TOKEN: str = Field(
-        validation_alias=AliasChoices('token'),
+        validation_alias=AliasChoices("TOKEN", 'token'),
         title="Bot Token",
         description="Telegram bot token"
     )
 
     PROXY: str | None = Field(
         default=None,
-        validation_alias=AliasChoices("proxy", "bot_proxy", "proxy_alias"),
+        validation_alias=AliasChoices("PROXY", "proxy", "bot_proxy", "proxy_alias"),
         title="Session proxy",
         description="Telegram session proxy"
     )
     REDIS_DNS: RedisDsn | None = Field(
         default=None,
-        validation_alias=AliasChoices('redis_url', "redis_path"),
+        validation_alias=AliasChoices("REDIS_DNS", 'redis_url', "redis_path"),
         title="Redis URL",
     )
 
