@@ -1,0 +1,62 @@
+version: "3.4"
+
+services:
+  api:
+    networks:
+      - common
+    build:
+      dockerfile: Dockerfile
+      context: api
+      network: host
+    restart: always
+    env_file:
+      - .env
+
+  bot:
+    networks:
+      - common
+    build:
+      dockerfile: Dockerfile
+      context: bot
+      network: host
+    restart: always
+    env_file:
+      - .env
+
+  frontend:
+    networks:
+      - common
+    build:
+      dockerfile: Dockerfile
+      context: frontend
+      network: host
+    restart: always
+    env_file:
+      - .env
+
+  nginx:
+    networks:
+      - common
+    build:
+      dockerfile: Dockerfile
+      context: nginx
+      network: host
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./nginx/ssl:/etc/nginx/ssl
+    ports:
+      - "443:443"
+      - "80:80"
+    depends_on:
+      - api
+      - frontend
+    deploy:
+      resources:
+        limits:
+          memory:
+            "128M"
+networks:
+  common:
+    driver: bridge
